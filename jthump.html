@@ -1,18 +1,17 @@
 <html>
 	<body>
 		<audio autoplay>
-			<source id="s1" src="" type="audio/mp3" />
-			<source id="s2" src="" type="audio/ogg" />
+			<source id="s1" src="" type="audio/ogg" />
+			<source id="s2" src="" type="audio/mp3" />
 		</audio>
 
-		<script>		
-			var u = window.location.pathname;
-			var n = location.search.substring( 1 );
-			var hash = n.split('=');
-			var p = "instruments/" + hash[0] + "/" + hash[1];
-			
-			document.getElementById( "s1" ).setAttribute( "src", p + ".ogg" );
-			document.getElementById( "s2" ).setAttribute( "src", p + ".mp3" );
+		<script>
+			var qs = location.search.substring( 1 );
+			var hash = qs.split( '=' );
+			var path = "instruments/" + hash[0] + "/" + hash[1];
+
+			document.getElementById( "s1" ).setAttribute( "src", path + ".ogg" );
+			document.getElementById( "s2" ).setAttribute( "src", path + ".mp3" );
 		</script>
 	</body>
 </html>
