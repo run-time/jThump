@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<!-- this page uses the jThump library created by Dave Alger http://r.unti.me -->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	<meta name="author" content="Dave Alger" />
+	
+	<script language="javascript" type="text/javascript" src="piano.js"></script>
+</head>
+
+<body>
+<p id="code" style="color:#ccaa99; padding:0;margin:0;padding-top:8px;padding-bottom:16px;font-family:Georgia;font-size:50px;text-align:center;">TYPE</p>
+<p style="color:#ccaa99;font-family:Georgia;font-size:18px;text-align:center;">play a random note by pressing the 'z' key</p>
+<script>
+document.onkeydown = checkKeycode
+function checkKeycode(e)
+{
+	var keycode = 1;
+	if (window.event) keycode = window.event.keyCode;
+	else if (e) keycode = e.which;
+	
+	if ( keycode < 1 || keycode > 88 )
+	{
+		switch (keycode)
+		{
+			case 90: jThump( rN(1,88), 'piano' ); break;  // the 'z' key plays random notes
+			case 107: chord(49,53,56); break;
+			case 109: chord(44,49,53); break;
+			case 219: chord(32,39,44); break;
+			case 220: chord(44,48,51); break;
+			case 221: chord(39,44,48); break;
+			default: chord(rN(1,88),rN(1,88),rN(1,88)); break;
+		}
+	}
+	else
+	{
+		jThump( parseInt( keycode ), 'piano' );
+	}
+	
+	//document.getElementById('code').innerHTML = keycode;
+}
+
+function chord(n1,n2,n3)
+{
+	jThump( n1, 'piano' );
+	jThump( n2, 'piano' );
+	jThump( n3, 'piano' );
+}
+
+function rN(low,high)
+{
+	return Math.floor(Math.random()*(high-low+1)+low);
+}
+</script>
+</body>
+
+</html>

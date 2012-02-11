@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<body>
+<audio autoplay>
+  <source id="s1" src="" type="audio/ogg" />
+  <source id="s2" src="" type="audio/mp3" />
+</audio>
+<script>
+var u=window.location.pathname;
+var p=u.substring(u.lastIndexOf('/')+1,u.lastIndexOf('.'));
+var n=location.search.substring(1);
+document.getElementById('s1').setAttribute('src',p+'/ogg/'+n+'.ogg');
+document.getElementById('s2').setAttribute('src',p+'/mp3/'+n+'.mp3');
+</script>
+</body>
+</html>
