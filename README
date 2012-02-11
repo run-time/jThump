@@ -1,8 +1,8 @@
-HTML 5 <audio> is awesome but the individual browser implementations are still very lacking.
+HTML 5 <audio> is awesome but individual browser implementations are still lacking.
 
-FireFox doesn't play mp3 (without putting in 'mad' effort)
-Internet Explorer doesn't handle multiple channels very well (if at all)
-Chrome is the best (what else is new?) but even Chrome hangs or loses audio output under certain situations
+* FireFox doesn't play mp3 (without putting in 'mad' effort)
+* Internet Explorer doesn't handle multiple channels very well (if at all)
+* Chrome is the best (what else is new?) but even Chrome hangs or loses audio output under certain situations
 
 These are only a few of the problems solved by jThump -- a multi-channel js audio library.
 
@@ -26,7 +26,12 @@ Here is a working demo on my personal site:
 http://r.unti.me/jThump/
 
 
-jThump currently only supports the 88 keys of a piano but a working drum kit is soon to join the list of instruments that can be Thumped!  >>  jThump( 1, 'drums' );
+jThump currently supports:
+* ALL 88 piano keys
+* 50 drum kit sounds
+* 60 flute notes
+
+Adding a stack of custom sounds is easy so join in and add your own instruments to be jThumped!  >>  jThump( 1, 'drums' );
 
 Thanks for playing with me,
 run-time
