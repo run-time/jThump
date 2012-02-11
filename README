@@ -1,10 +1,14 @@
-Let's face it, getting multi-channel audio to work programmatically in HTML is almost impossible without using Flash.
+HTML 5 <audio> is awesome but the individual browser implementations are still very lacking.
 
-jThump stems from an idea that came to me while listening to audio in one browser tab while another browser tab started playing something else.
+FireFox doesn't play mp3 (without putting in 'mad' effort)
+Internet Explorer doesn't handle multiple channels very well (if at all)
+Chrome is the best (what else is new?) but even Chrome hangs or loses audio output under certain situations
 
-I threw together this little piano demo and the result was better than expected so I decided to post it on github for all you smart people in the world to improve upon my little experiment
+These are only a few of the problems solved by jThump -- a multi-channel js audio library.
 
-Once in place the javascript calls are super easy and look like this...
+Wouldn't it be great if you just had to write a single line of code to play any key on the piano in any browser without Flash?
+
+jThump makes it all possible:
 
 // play the lowest piano key (1)
 jThump( 1, 'piano' );
@@ -13,19 +17,16 @@ jThump( 1, 'piano' );
 jThump( 88, 'piano' );
 
 
-The project's index.html contains a further sample on how to use jThump (currently only the 88 keys on a piano is supported but a drum kit will be added next)
+The idea came to me while listening to audio in one browser tab while another browser tab started playing over the top of it.
+I wondered if I could dynamically create a bunch of tiny web pages that each play a different sound when opened and then chain them together inside invisible iframes that are created just long enough to play the audio and then go away.
+The result turned out better than expected and is probably good enough to be used in most HTML 5 games (some lagging issues at first but they quickly ease up as the bytes get cached)
 
 
-Here are the files on my personal site to make it easier to demo:
-
-The result is probably good enough to be used in most HTML 5 games
+Here is a working demo on my personal site:
 http://r.unti.me/jThump/
 
-This URL will play the lowest note on the piano
-http://r.unti.me/jThump/piano.html?1
 
-This URL will play the highest note on the piano
-http://r.unti.me/jThump/piano.html?88
+jThump currently only supports the 88 keys of a piano but a working drum kit is soon to join the list of instruments that can be Thumped!  >>  jThump( 1, 'drums' );
 
-
-Let me know what you think
+Thanks for playing with me,
+run-time
