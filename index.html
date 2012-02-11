@@ -11,16 +11,30 @@ jThump can be downloaded from here  --  https://github.com/run-time/jThump
 		<script language="javascript" type="text/javascript" src="jthump.js"></script>
 		<style>
 			body { background-color: #f6f6f0; }
-			p { color:#ccaa99; padding:0; margin:0; padding-top:8px; padding-bottom:18px; font-family:Georgia; text-align:center; }
-			a { color:#ccaa99; padding:0; margin-top:20; padding-top:8px; font-family:Georgia; text-align:center; }
+			select, p, a { color:#ccaa99; padding:0; font-family:Georgia; text-align:center; } 
+			p { margin:0; padding-top:8px; padding-bottom:18px; }
+			a { margin-top:20; padding-top:8px; }
+			select { border: 2px solid tan; font-size:26px; }
 		</style>
 	</head>
 	<body>
 		<div style="font-size:18px; color:#ccaa99; margin:20px; padding-bottom:20px; font-family:Georgia; text-align:center; border-bottom: 2px solid #f0e5e0;">This demo was made possible by the <a href="https://github.com/run-time/jThump">jThump audio library on github</a>.</div>
 		<p style="font-size:50px">Type on the Keyboard</p>
 		<p style="font-size:22px">play random notes by pressing the 'z' key</p>
-
+		
+		<br/>
+		
+		<div style="text-align:center">
+			<select id="instrument" onchange="window.sound=this.options[this.selectedIndex].value;">
+				<option value="piano">Piano</option>
+				<option value="flute">Flute</option>
+				<option value="drums">Drums</option>
+			</select>
+		</div>
+		
+		
 		<script>
+			var sound = 'piano';
 			document.onkeydown = checkKeycode
 			function checkKeycode(e)
 			{
@@ -28,30 +42,41 @@ jThump can be downloaded from here  --  https://github.com/run-time/jThump
 				if (window.event) keycode = window.event.keyCode;
 				else if (e) keycode = e.which;
 	
-				if ( keycode < 1 || keycode > 88 )
+				if ( sound == "piano" )
 				{
-					switch (keycode)
+					if ( keycode < 1 || keycode > 88 )
 					{
-						case 90: jThump( randBetween(1,88), 'piano' ); break;  // the 'z' key plays random notes
-						case 107: chord(49,53,56); break;
-						case 109: chord(44,49,53); break;
-						case 219: chord(32,39,44); break;
-						case 220: chord(44,48,51); break;
-						case 221: chord(39,44,48); break;
-						default: stopAll(); break;
+						switch (keycode)
+						{
+							case 90: jThump( randBetween(1,88), sound ); break;  // the 'z' key plays random notes
+							case 107: chord(49,53,56); break;
+							case 109: chord(44,49,53); break;
+							case 219: chord(32,39,44); break;
+							case 220: chord(44,48,51); break;
+							case 221: chord(39,44,48); break;
+							default: stopAll(); break;
+						}
 					}
+					else
+					{
+						jThump( parseInt( keycode ), sound );
+					}
+				}
+				else if ( ( sound == 'flute' && keycode >= 1 && keycode <= 60 ) || ( sound == 'drums' && keycode >= 1 && keycode <= 50 ) )
+				{
+					jThump( parseInt( keycode ), sound );
 				}
 				else
 				{
-					jThump( parseInt( keycode ), 'piano' );
+					jThump( randBetween(1,50), sound );
 				}
 			}
 
 			function chord(n1,n2,n3)
 			{
-				jThump( n1, 'piano' );
-				jThump( n2, 'piano' );
-				jThump( n3, 'piano' );
+				jThump( n1, sound );
+				jThump( n2, sound );
+				jThump( n3, sound );
 			}
 
 			function randBetween( low, high )
