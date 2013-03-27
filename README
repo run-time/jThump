@@ -23,7 +23,7 @@ The result turned out better than expected and is probably good enough to be use
 
 
 Here is a working demo on my personal site:
-http://jthump.org
+http://davealger.com/jthump
 
 
 jThump currently supports:
@@ -33,5 +33,5 @@ jThump currently supports:
 
 Adding a stack of custom sounds is easy so join in and add your own instruments to be jThumped!  >>  jThump( 1, 'drums' );
 
-Thanks for playing with me,
+Thanks for playing,
 run-time
